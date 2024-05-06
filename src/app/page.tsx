@@ -41,13 +41,16 @@ export default function Home() {
     if (parse?.success) {
       const data = parse.data;
       try {
-        const res = await fetch(`${process.env.REACT_API}${algorithm}`, {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_REACT_API}${algorithm}`,
+          {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
         const d = await res.json();
         setResult(d);
         return { message: `Updated calculation ${data}` };
